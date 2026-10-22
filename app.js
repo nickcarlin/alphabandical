@@ -2,7 +2,7 @@ let DATA = [];
 const PAGE_SIZE = 100;
 
 const state = {
-  chooser: null, decade: null,
+  chooser: null,
   artist: null, album: null,
   search: '',
   query: null, queryFn: null, queryCustom: null,
@@ -39,18 +39,6 @@ function buildBars() {
   uniqueChoosers().forEach(c => {
     chooserBar.appendChild(mkBtn(c, () => {
       state.chooser = (state.chooser === c) ? null : c;
-      state.page = 0;
-      render();
-    }));
-  });
-
-  const decades = [...new Set(DATA.map(s => Math.floor(s.year / 10) * 10))].sort((a,b) => a-b);
-  const decadeBar = document.getElementById('decade-bar');
-  decadeBar.innerHTML = '';
-  decadeBar.appendChild(mkBtn('All', () => { state.decade = null; state.page = 0; render(); }));
-  decades.forEach(d => {
-    decadeBar.appendChild(mkBtn(`${d}s`, () => {
-      state.decade = (state.decade === d) ? null : d;
       state.page = 0;
       render();
     }));
@@ -137,7 +125,6 @@ function wireSearch() {
   });
   document.getElementById('clear-filters').addEventListener('click', () => {
     state.chooser = null;
-    state.decade = null;
     state.artist = null;
     state.album = null;
     state.search = '';
@@ -251,7 +238,6 @@ function render() {
   let rows = state.queryFn ? state.queryFn() : DATA.slice();
 
   if (state.chooser) rows = rows.filter(s => s.chooser === state.chooser);
-  if (state.decade !== null) rows = rows.filter(s => Math.floor(s.year / 10) * 10 === state.decade);
   if (state.artist) rows = rows.filter(s => s.artist === state.artist);
   if (state.album)  rows = rows.filter(s => s.album  === state.album);
   if (state.search) {
@@ -288,7 +274,6 @@ function render() {
 
   const bits = [`${total} of ${DATA.length} rows`];
   if (state.chooser) bits.push(`chooser=${state.chooser}`);
-  if (state.decade !== null) bits.push(`${state.decade}s`);
   if (state.artist) bits.push(`artist="${state.artist}"`);
   if (state.album)  bits.push(`album="${state.album}"`);
   if (state.search) bits.push(`search="${state.search}"`);
@@ -358,20 +343,16 @@ function drillHint(spec) {
 }
 
 function updateClearVisibility() {
-  const any = state.chooser || state.decade !== null ||
-              state.artist || state.album || state.search ||
-              state.query;
+  const any = state.chooser || state.artist || state.album ||
+              state.search || state.query;
   document.getElementById('clear-bar').style.display = any ? 'block' : 'none';
 }
 
 function markActiveButtons() {
-  document.querySelectorAll('#chooser-bar button, #decade-bar button, #query-bar button')
+  document.querySelectorAll('#chooser-bar button, #query-bar button')
     .forEach(b => b.classList.remove('active'));
   document.querySelectorAll('#chooser-bar button').forEach(b => {
     if ((b.textContent === 'All' && !state.chooser) || b.textContent === state.chooser) b.classList.add('active');
-  });
-  document.querySelectorAll('#decade-bar button').forEach(b => {
-    if ((b.textContent === 'All' && state.decade === null) || b.textContent === `${state.decade}s`) b.classList.add('active');
   });
   document.querySelectorAll('#query-bar button').forEach(b => {
     if (b.textContent === state.query) b.classList.add('active');
@@ -395,7 +376,7 @@ document.addEventListener('click', e => {
     const field = drillCell.dataset.drill;
     const value = drillCell.dataset.value;
     state.query = null; state.queryFn = null; state.queryCustom = null;
-    state.chooser = null; state.decade = null;
+    state.chooser = null;
     state.artist = null;  state.album  = null;
     if (field === 'chooser') state.chooser = value;
     if (field === 'artist')  state.artist  = value;
