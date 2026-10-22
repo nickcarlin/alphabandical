@@ -76,7 +76,7 @@ function buildBars() {
                      sortKey: 'year', sortDir: 1 },
     'Newest 10':   { fn: () => [...DATA].sort((a,b) => b.year - a.year).slice(0,10),
                      sortKey: 'year', sortDir: -1 },
-    'Random pick': { fn: () => [DATA[Math.floor(Math.random() * DATA.length)]],
+    'Random pick': { fn: () => [],  // handled specially in render()
                      sortKey: null, sortDir: 1 },
     'Duplicates':  { fn: findDuplicates,
                      sortKey: 'artist', sortDir: 1 },
@@ -255,14 +255,29 @@ function render() {
 
   restoreSongHeaders();
 
-  let rows = state.queryFn ? state.queryFn() : DATA.slice();
-
-  if (state.chooser) rows = rows.filter(s => s.chooser === state.chooser);
-  if (state.artist) rows = rows.filter(s => s.artist === state.artist);
-  if (state.album)  rows = rows.filter(s => s.album  === state.album);
-  if (state.search) {
-    const q = state.search;
-    rows = rows.filter(s => s._hay.includes(q));
+  let rows;
+  if (state.query === 'Random pick') {
+    // Random pick draws from the currently filtered set, not the whole table.
+    rows = DATA.slice();
+    if (state.chooser) rows = rows.filter(s => s.chooser === state.chooser);
+    if (state.artist) rows = rows.filter(s => s.artist === state.artist);
+    if (state.album)  rows = rows.filter(s => s.album  === state.album);
+    if (state.search) {
+      const q = state.search;
+      rows = rows.filter(s => s._hay.includes(q));
+    }
+    if (rows.length > 0) {
+      rows = [rows[Math.floor(Math.random() * rows.length)]];
+    }
+  } else {
+    rows = state.queryFn ? state.queryFn() : DATA.slice();
+    if (state.chooser) rows = rows.filter(s => s.chooser === state.chooser);
+    if (state.artist) rows = rows.filter(s => s.artist === state.artist);
+    if (state.album)  rows = rows.filter(s => s.album  === state.album);
+    if (state.search) {
+      const q = state.search;
+      rows = rows.filter(s => s._hay.includes(q));
+    }
   }
 
   const k = state.sortKey;
