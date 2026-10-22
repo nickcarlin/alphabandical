@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Alphabandical</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 2rem; max-width: 1100px; }
+    h1 { margin-bottom: 0.25rem; }
+    #summary { color: #666; margin-bottom: 1.5rem; }
+    .bar { margin-bottom: 0.75rem; }
+    .bar strong { display: inline-block; width: 90px; }
+    button { margin: 0 0.25rem 0.25rem 0; padding: 0.25rem 0.6rem;
+             border: 1px solid #999; background: #f4f4f4; cursor: pointer;
+             border-radius: 3px; font: inherit; }
+    button.active { background: #333; color: #fff; border-color: #333; }
+    button:disabled { opacity: 0.4; cursor: default; }
+    table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+    th, td { text-align: left; padding: 0.3rem 0.5rem; border-bottom: 1px solid #ddd; }
+    th { background: #f0f0f0; position: sticky; top: 0; }
+    tr:hover td { background: #fafafa; }
+    #count { color: #666; margin: 0.5rem 0; font-size: 0.85rem; }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    #search { padding: 0.3rem 0.5rem; border: 1px solid #999; border-radius: 3px;
+              font: inherit; width: 20em; }
+  </style>
+</head>
+<body>
+  <h1>Alphabandical</h1>
+  <div id="summary">Loading…</div>
+
+  <div class="bar">
+    <strong>Search</strong>
+    <input id="search" type="search" placeholder="artist, title, or album…" autocomplete="off">
+  </div>
+  <div class="bar"><strong>Chooser</strong><span id="chooser-bar"></span></div>
+  <div class="bar"><strong>Decade</strong><span id="decade-bar"></span></div>
+  <div class="bar"><strong>Query</strong><span id="query-bar"></span></div>
+
+  <div id="count"></div>
+  <div id="clear-bar" style="display:none; margin-bottom:0.5rem;">
+    <button id="clear-filters">Clear filters</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th data-sort="artist">Artist</th>
+        <th data-sort="title">Title</th>
+        <th data-sort="album">Album</th>
+        <th data-sort="year" class="num">Year</th>
+        <th data-sort="time" class="num">Time</th>
+        <th data-sort="chooser">Chooser</th>
+        <th data-sort="challenge">Challenge</th>
+      </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+
+  <div id="pager" style="margin-top:0.75rem; display:none;">
+    <button id="prev-page">← Prev</button>
+    <span id="page-info" style="margin: 0 0.75rem; color:#666;"></span>
+    <button id="next-page">Next →</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
