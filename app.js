@@ -10,7 +10,7 @@ const state = {
   page: 0,
 };
 
-fetch('songs.json')
+fetch('songs.json?v=' + Date.now())
   .then(r => r.json())
   .then(data => {
     DATA = data;
