@@ -42,6 +42,9 @@ function buildBars() {
   chooserBar.innerHTML = '';
   chooserBar.appendChild(mkBtn('All', () => {
     state.chooser = null;
+    state.query = null;
+    state.queryFn = null;
+    state.queryCustom = null;
     clearSearchBox();
     state.page = 0;
     render();
@@ -49,6 +52,9 @@ function buildBars() {
   uniqueChoosers().forEach(c => {
     chooserBar.appendChild(mkBtn(c, () => {
       state.chooser = (state.chooser === c) ? null : c;
+      state.query = null;
+      state.queryFn = null;
+      state.queryCustom = null;
       clearSearchBox();
       state.page = 0;
       render();
