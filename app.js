@@ -32,13 +32,24 @@ function uniqueChoosers() {
   return [...new Set(DATA.map(s => s.chooser))].sort();
 }
 
+function clearSearchBox() {
+  state.search = '';
+  document.getElementById('search').value = '';
+}
+
 function buildBars() {
   const chooserBar = document.getElementById('chooser-bar');
   chooserBar.innerHTML = '';
-  chooserBar.appendChild(mkBtn('All', () => { state.chooser = null; state.page = 0; render(); }));
+  chooserBar.appendChild(mkBtn('All', () => {
+    state.chooser = null;
+    clearSearchBox();
+    state.page = 0;
+    render();
+  }));
   uniqueChoosers().forEach(c => {
     chooserBar.appendChild(mkBtn(c, () => {
       state.chooser = (state.chooser === c) ? null : c;
+      clearSearchBox();
       state.page = 0;
       render();
     }));
@@ -74,6 +85,7 @@ function buildBars() {
       state.query = on ? label : null;
       state.queryFn = null;
       state.queryCustom = on ? fn : null;
+      clearSearchBox();
       state.page = 0;
       render();
     }));
@@ -85,6 +97,7 @@ function buildBars() {
         state.query = label;
         state.queryFn = q.fn;
         state.queryCustom = null;
+        clearSearchBox();
         state.page = 0;
         if (q.sortKey) { state.sortKey = q.sortKey; state.sortDir = q.sortDir; }
         render();
@@ -94,6 +107,7 @@ function buildBars() {
       state.query = on ? label : null;
       state.queryFn = on ? q.fn : null;
       state.queryCustom = null;
+      clearSearchBox();
       state.page = 0;
       if (on && q.sortKey) { state.sortKey = q.sortKey; state.sortDir = q.sortDir; }
       render();
@@ -388,6 +402,7 @@ document.addEventListener('click', e => {
       state.sortKey = 'artist'; state.sortDir = 1;
     }
 
+    clearSearchBox();
     state.page = 0;
     render();
     return;
