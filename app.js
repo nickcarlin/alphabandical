@@ -127,6 +127,10 @@ function wireSearch() {
     clearTimeout(searchTimer);
     searchTimer = setTimeout(() => {
       state.search = input.value.trim().toLowerCase();
+      if (state.search) {
+        state.sortKey = 'artist';
+        state.sortDir = 1;
+      }
       state.page = 0;
       render();
     }, 150);
@@ -259,7 +263,9 @@ function render() {
   rows.sort((a, b) => {
     const av = a[k], bv = b[k];
     if (typeof av === 'number') return (av - bv) * state.sortDir;
-    return String(av).localeCompare(String(bv)) * state.sortDir;
+    const primary = String(av).localeCompare(String(bv)) * state.sortDir;
+    if (primary !== 0) return primary;
+    return String(a.title).localeCompare(String(b.title));
   });
 
   const total = rows.length;
@@ -395,7 +401,6 @@ document.addEventListener('click', e => {
     if (field === 'artist')  state.artist  = value;
     if (field === 'album')   state.album   = value;
 
-    // Sort depends on what we drilled into
     if (field === 'artist' || field === 'album') {
       state.sortKey = 'title'; state.sortDir = 1;
     } else {
