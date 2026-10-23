@@ -1,0 +1,4 @@
+./export.sh
+git add songs.json
+git commit -m "update songs"
+git push
