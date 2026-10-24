@@ -69,15 +69,8 @@ function buildBars() {
     'No Album':      noAlbum,
   };
 
+  // Longest/Shortest/Oldest/Newest removed — use column sorting instead
   const songQueries = {
-    'Longest 10':  { fn: () => [...DATA].sort((a,b) => b.time - a.time).slice(0,10),
-                     sortKey: 'time', sortDir: -1 },
-    'Shortest 10': { fn: () => [...DATA].sort((a,b) => a.time - b.time).slice(0,10),
-                     sortKey: 'time', sortDir: 1 },
-    'Oldest 10':   { fn: () => [...DATA].sort((a,b) => a.year - b.year).slice(0,10),
-                     sortKey: 'year', sortDir: 1 },
-    'Newest 10':   { fn: () => [...DATA].sort((a,b) => b.year - a.year).slice(0,10),
-                     sortKey: 'year', sortDir: -1 },
     'Random pick': { fn: () => [],
                      sortKey: null, sortDir: 1 },
     'Duplicates':  { fn: findDuplicates,
@@ -346,14 +339,27 @@ function render() {
 }
 
 function restoreSongHeaders() {
-  document.querySelector('table thead tr').innerHTML = `
-    <th data-sort="artist">Artist</th>
-    <th data-sort="title">Title</th>
-    <th data-sort="album">Album</th>
-    <th data-sort="year" class="num">Year</th>
-    <th data-sort="time" class="num">Time</th>
-    <th data-sort="chooser">Chooser</th>
-    <th data-sort="challenge">Challenge</th>`;
+  const headers = [
+    { key: 'artist', label: 'Artist' },
+    { key: 'title', label: 'Title' },
+    { key: 'album', label: 'Album' },
+    { key: 'year', label: 'Year', num: true },
+    { key: 'time', label: 'Time', num: true },
+    { key: 'chooser', label: 'Chooser' },
+    { key: 'challenge', label: 'Challenge' }
+  ];
+
+  document.querySelector('table thead tr').innerHTML = headers.map(h => {
+    let icon = '↕';
+    let activeClass = '';
+    
+    if (state.sortKey === h.key) {
+      icon = state.sortDir === 1 ? '⬆' : '⬇';
+      activeClass = ' active';
+    }
+
+    return `<th data-sort="${h.key}" class="${h.num ? 'num' : ''}${activeClass}">${h.label} <span class="sort-icon">${icon}</span></th>`;
+  }).join('');
 }
 
 function updatePager(total, totalPages) {

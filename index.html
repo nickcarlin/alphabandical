@@ -17,7 +17,17 @@
     button:disabled { opacity: 0.4; cursor: default; }
     table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
     th, td { text-align: left; padding: 0.3rem 0.5rem; border-bottom: 1px solid #ddd; }
-    th { background: #f0f0f0; position: sticky; top: 0; }
+    
+    /* Sortable header styles */
+    th { background: #f0f0f0; position: sticky; top: 0; cursor: pointer; user-select: none; vertical-align: middle; white-space: nowrap; }
+    th:hover { background: #e0e0e0; }
+    th.active { background: #e0e0e0; color: #000; }
+    
+    /* Hide the generic sort arrow until hover, but keep active arrows visible */
+    th .sort-icon { color: #aaa; font-size: 0.85em; margin-left: 4px; display: inline-block; opacity: 0; transition: opacity 0.2s; }
+    th:hover .sort-icon, th.active .sort-icon { opacity: 1; }
+    th.active .sort-icon { color: #333; font-weight: bold; }
+    
     tr:hover td { background: #fafafa; }
     #count { color: #666; margin: 0.5rem 0; font-size: 0.85rem; }
     .num { text-align: right; font-variant-numeric: tabular-nums; }
@@ -44,13 +54,13 @@
   <table>
     <thead>
       <tr>
-        <th data-sort="artist">Artist</th>
-        <th data-sort="title">Title</th>
-        <th data-sort="album">Album</th>
-        <th data-sort="year" class="num">Year</th>
-        <th data-sort="time" class="num">Time</th>
-        <th data-sort="chooser">Chooser</th>
-        <th data-sort="challenge">Challenge</th>
+        <th data-sort="artist">Artist <span class="sort-icon">↕</span></th>
+        <th data-sort="title">Title <span class="sort-icon">↕</span></th>
+        <th data-sort="album">Album <span class="sort-icon">↕</span></th>
+        <th data-sort="year" class="num">Year <span class="sort-icon">↕</span></th>
+        <th data-sort="time" class="num">Time <span class="sort-icon">↕</span></th>
+        <th data-sort="chooser">Chooser <span class="sort-icon">↕</span></th>
+        <th data-sort="challenge">Challenge <span class="sort-icon">↕</span></th>
       </tr>
     </thead>
     <tbody id="rows"></tbody>
