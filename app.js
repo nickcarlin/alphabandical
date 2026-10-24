@@ -65,7 +65,7 @@ function buildBars() {
     'Chooser stats': chooserStats,
     'Artists >1':    artistsOver1,
     'Albums >1':     albumsOver1,
-    'Singles':       singlesOnly,
+    'No Album':      noAlbum,
   };
 
   const songQueries = {
@@ -246,7 +246,7 @@ function albumsOver1() {
   };
 }
 
-function singlesOnly() {
+function noAlbum() {
   const rows = DATA
     .filter(s => s.album === 'Single')
     .sort((a,b) => a.artist.localeCompare(b.artist) || a.title.localeCompare(b.title));
@@ -381,7 +381,7 @@ function renderCustom(spec) {
   ).join('');
 
   document.getElementById('count').textContent =
-    `${spec.rows.length} rows · query=${state.query} · click a ${drillHint(spec)} to see those songs`;
+    `${spec.rows.length} rows · query=${state.query} · click ${drillHint(spec)} to see those songs`;
 
   document.getElementById('pager').style.display = 'none';
   updateClearVisibility();
@@ -389,7 +389,8 @@ function renderCustom(spec) {
 
 function drillHint(spec) {
   const d = spec.columns.find(c => c.drill);
-  return d ? d.drill : 'row';
+  if (!d) return 'a row';
+  return d.drill === 'artist' ? 'an artist' : d.drill;
 }
 
 function updateClearVisibility() {
