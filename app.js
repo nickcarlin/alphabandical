@@ -4,6 +4,7 @@ const PAGE_SIZE = 100;
 const state = {
   chooser: null,
   artist: null, album: null,
+  challenge: null,
   search: '',
   query: null, queryFn: null, queryCustom: null,
   sortKey: 'artist', sortDir: 1,
@@ -148,6 +149,7 @@ function wireSearch() {
     state.chooser = null;
     state.artist = null;
     state.album = null;
+    state.challenge = null;
     state.search = '';
     state.query = null;
     state.queryFn = null;
@@ -277,6 +279,7 @@ function render() {
     if (state.chooser) rows = rows.filter(s => s.chooser === state.chooser);
     if (state.artist) rows = rows.filter(s => s.artist === state.artist);
     if (state.album)  rows = rows.filter(s => s.album  === state.album);
+    if (state.challenge) rows = rows.filter(s => s.challenge === state.challenge);
     if (state.search) {
       const q = state.search;
       rows = rows.filter(s => s._hay.includes(q));
@@ -289,6 +292,7 @@ function render() {
     if (state.chooser) rows = rows.filter(s => s.chooser === state.chooser);
     if (state.artist) rows = rows.filter(s => s.artist === state.artist);
     if (state.album)  rows = rows.filter(s => s.album  === state.album);
+    if (state.challenge) rows = rows.filter(s => s.challenge === state.challenge);
     if (state.search) {
       const q = state.search;
       rows = rows.filter(s => s._hay.includes(q));
@@ -319,13 +323,14 @@ function render() {
       <td class="num">${s.year}</td>
       <td class="num">${fmtTime(s.time)}</td>
       <td>${esc(s.chooser)}</td>
-      <td>${esc(s.challenge)}</td>
+      <td data-drill="challenge" data-value="${esc(s.challenge)}" style="cursor:pointer;text-decoration:underline">${esc(s.challenge)}</td>
     </tr>`).join('');
 
   const bits = [`${total} of ${DATA.length} rows`];
   if (state.chooser) bits.push(`chooser=${state.chooser}`);
   if (state.artist) bits.push(`artist="${state.artist}"`);
   if (state.album)  bits.push(`album="${state.album}"`);
+  if (state.challenge) bits.push(`challenge="${state.challenge}"`);
   if (state.search) bits.push(`search="${state.search}"`);
   if (state.query)  bits.push(`query=${state.query}`);
 
@@ -394,7 +399,7 @@ function drillHint(spec) {
 }
 
 function updateClearVisibility() {
-  const any = state.chooser || state.artist || state.album ||
+  const any = state.chooser || state.artist || state.album || state.challenge ||
               state.search || state.query;
   document.getElementById('clear-bar').style.display = any ? 'block' : 'none';
 }
@@ -429,9 +434,11 @@ document.addEventListener('click', e => {
     state.query = null; state.queryFn = null; state.queryCustom = null;
     state.chooser = null;
     state.artist = null;  state.album  = null;
+    state.challenge = null;
     if (field === 'chooser') state.chooser = value;
     if (field === 'artist')  state.artist  = value;
     if (field === 'album')   state.album   = value;
+    if (field === 'challenge') state.challenge = value;
 
     if (field === 'artist' || field === 'album') {
       state.sortKey = 'title'; state.sortDir = 1;
