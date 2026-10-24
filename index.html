@@ -6,8 +6,19 @@
   <title>Alphabandical</title>
   <style>
     body { font-family: system-ui, sans-serif; margin: 2rem; max-width: 1100px; }
-    h1 { margin-bottom: 0.25rem; }
-    #summary { color: #666; margin-bottom: 1.5rem; }
+    
+    /* Header layout for photos */
+    .header-container { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem; }
+    .title-area { display: flex; flex-direction: column; }
+    h1 { margin: 0; margin-bottom: 0.25rem; }
+    #summary { color: #666; }
+    
+    /* Photo strip styles */
+    .chooser-photos { display: flex; gap: 8px; }
+    .chooser-photos img { width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid #ddd; box-shadow: 0 2px 4px rgba(0,0,0,0.1); transition: transform 0.2s, border-color 0.2s; cursor: pointer; }
+    .chooser-photos img:hover { transform: scale(1.1); z-index: 10; position: relative; }
+    .chooser-photos img.active { border-color: #333; box-shadow: 0 0 0 2px #333; }
+
     .bar { margin-bottom: 0.75rem; }
     .bar strong { display: inline-block; width: 90px; }
     button { margin: 0 0.25rem 0.25rem 0; padding: 0.25rem 0.6rem;
@@ -36,8 +47,19 @@
   </style>
 </head>
 <body>
-  <h1>Alphabandical</h1>
-  <div id="summary">Loading…</div>
+  <div class="header-container">
+    <div class="title-area">
+      <h1>Alphabandical</h1>
+      <div id="summary">Loading…</div>
+    </div>
+    <div class="chooser-photos">
+      <img src="david.jpg" alt="David" data-chooser="David">
+      <img src="derek.jpg" alt="Derek" data-chooser="Derek">
+      <img src="gary.jpg" alt="Gary" data-chooser="Gary">
+      <img src="nick.jpg" alt="Nick" data-chooser="Nick">
+      <img src="paul.jpg" alt="Paul" data-chooser="Paul">
+    </div>
+  </div>
 
   <div class="bar">
     <strong>Search</strong>

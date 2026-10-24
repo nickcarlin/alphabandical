@@ -69,7 +69,6 @@ function buildBars() {
     'No Album':      noAlbum,
   };
 
-  // Longest/Shortest/Oldest/Newest removed — use column sorting instead
   const songQueries = {
     'Random pick': { fn: () => [],
                      sortKey: null, sortDir: 1 },
@@ -419,6 +418,15 @@ function markActiveButtons() {
   document.querySelectorAll('#query-bar button').forEach(b => {
     if (b.textContent === state.query) b.classList.add('active');
   });
+
+  // Highlight the active photo
+  document.querySelectorAll('.chooser-photos img').forEach(img => {
+    if (img.dataset.chooser === state.chooser) {
+      img.classList.add('active');
+    } else {
+      img.classList.remove('active');
+    }
+  });
 }
 
 function esc(s) {
@@ -433,6 +441,21 @@ function fmtTime(sec) {
 }
 
 document.addEventListener('click', e => {
+  // 1. Handle photo clicks
+  const photo = e.target.closest('.chooser-photos img');
+  if (photo) {
+    const c = photo.dataset.chooser;
+    state.chooser = (state.chooser === c) ? null : c;
+    state.query = null;
+    state.queryFn = null;
+    state.queryCustom = null;
+    clearSearchBox();
+    state.page = 0;
+    render();
+    return;
+  }
+
+  // 2. Handle table drill-downs
   const drillCell = e.target.closest('td[data-drill]');
   if (drillCell) {
     const field = drillCell.dataset.drill;
@@ -457,6 +480,8 @@ document.addEventListener('click', e => {
     render();
     return;
   }
+
+  // 3. Handle column sorting
   const th = e.target.closest('th[data-sort]');
   if (!th) return;
   if (state.queryCustom) return;
