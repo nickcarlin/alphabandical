@@ -65,6 +65,7 @@ function buildBars() {
     'Chooser stats': chooserStats,
     'Artists >1':    artistsOver1,
     'Albums >1':     albumsOver1,
+    'Singles':       singlesOnly,
   };
 
   const songQueries = {
@@ -76,7 +77,7 @@ function buildBars() {
                      sortKey: 'year', sortDir: 1 },
     'Newest 10':   { fn: () => [...DATA].sort((a,b) => b.year - a.year).slice(0,10),
                      sortKey: 'year', sortDir: -1 },
-    'Random pick': { fn: () => [],  // handled specially in render()
+    'Random pick': { fn: () => [],
                      sortKey: null, sortDir: 1 },
     'Duplicates':  { fn: findDuplicates,
                      sortKey: 'artist', sortDir: 1 },
@@ -228,6 +229,7 @@ function artistsOver1() {
 function albumsOver1() {
   const by = new Map();
   DATA.forEach(s => {
+    if (s.album === 'Single') return;
     if (!by.has(s.album)) by.set(s.album, []);
     by.get(s.album).push(s);
   });
@@ -239,6 +241,20 @@ function albumsOver1() {
     columns: [
       { key: 'album', label: 'Album', drill: 'album' },
       { key: 'n',     label: 'Songs', num: true },
+    ],
+    rows,
+  };
+}
+
+function singlesOnly() {
+  const rows = DATA
+    .filter(s => s.album === 'Single')
+    .sort((a,b) => a.artist.localeCompare(b.artist) || a.title.localeCompare(b.title));
+  return {
+    columns: [
+      { key: 'artist', label: 'Artist', drill: 'artist' },
+      { key: 'title',  label: 'Title' },
+      { key: 'year',   label: 'Year', num: true },
     ],
     rows,
   };
@@ -257,7 +273,6 @@ function render() {
 
   let rows;
   if (state.query === 'Random pick') {
-    // Random pick draws from the currently filtered set, not the whole table.
     rows = DATA.slice();
     if (state.chooser) rows = rows.filter(s => s.chooser === state.chooser);
     if (state.artist) rows = rows.filter(s => s.artist === state.artist);
