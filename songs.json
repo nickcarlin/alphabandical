@@ -1006,7 +1006,7 @@
     "album": "Everybody Else Is Doing It, So Why Can't We?",
     "year": 1993,
     "time": 274,
-    "challenge": "Love ",
+    "challenge": "Love",
     "chooser": "Paul"
   },
   {
@@ -1016,7 +1016,7 @@
     "album": "The Freewheelin' Bob Dylan",
     "year": 1963,
     "time": 202,
-    "challenge": "Love ",
+    "challenge": "Love",
     "chooser": "Derek"
   },
   {
@@ -1026,7 +1026,7 @@
     "album": "Revolver",
     "year": 1966,
     "time": 155,
-    "challenge": "Love ",
+    "challenge": "Love",
     "chooser": "Nick"
   },
   {
@@ -1036,7 +1036,7 @@
     "album": "Café Bleu",
     "year": 1984,
     "time": 258,
-    "challenge": "Love ",
+    "challenge": "Love",
     "chooser": "David"
   },
   {
@@ -1173,7 +1173,7 @@
     "id": 118,
     "artist": "The Beatles",
     "title": "I Will",
-    "album": "The Beatles (White Album)",
+    "album": "The Beatles",
     "year": 1968,
     "time": 106,
     "challenge": "Yourself",
@@ -1456,7 +1456,7 @@
     "album": "Shooting Straight in the Dark",
     "year": 1990,
     "time": 190,
-    "challenge": "Growing old",
+    "challenge": "Growing Old",
     "chooser": "Derek"
   },
   {
@@ -2183,7 +2183,7 @@
     "id": 219,
     "artist": "The Beatles",
     "title": "I'll Follow the Sun",
-    "album": "Beatles For Sale",
+    "album": "Beatles for Sale",
     "year": 1964,
     "time": 109,
     "challenge": "Astronomy",
@@ -2384,7 +2384,7 @@
     "artist": "Bob Dylan",
     "title": "Jokerman",
     "album": "Infidels",
-    "year": 1984,
+    "year": 1983,
     "time": 492,
     "challenge": "Teacher",
     "chooser": "Derek"
@@ -2454,7 +2454,7 @@
     "artist": "Fleetwood Mac",
     "title": "Dreams",
     "album": "Rumours",
-    "year": 1976,
+    "year": 1977,
     "time": 254,
     "challenge": "Five piece",
     "chooser": "Paul"
@@ -2604,7 +2604,7 @@
     "artist": "The Clash",
     "title": "Train in Vain",
     "album": "London Calling",
-    "year": 1980,
+    "year": 1979,
     "time": 189,
     "challenge": "Train",
     "chooser": "Paul"
@@ -2613,7 +2613,7 @@
     "id": 262,
     "artist": "Jim Hendricks",
     "title": "The Ballad of Casey Jones",
-    "album": "Appalacian Gold",
+    "album": "Appalachian Gold",
     "year": 1996,
     "time": 198,
     "challenge": "Train",
@@ -2834,7 +2834,7 @@
     "artist": "Buddy Holly",
     "title": "Moondreams",
     "album": "The Buddy Holly Story, Vol. 2",
-    "year": 1959,
+    "year": 1960,
     "time": 162,
     "challenge": "Comeback",
     "chooser": "Derek"
@@ -3153,7 +3153,7 @@
     "id": 316,
     "artist": "The Doors",
     "title": "Riders on the Storm",
-    "album": "L.A.Woman",
+    "album": "L.A. Woman",
     "year": 1971,
     "time": 429,
     "challenge": "Weather",
@@ -3203,7 +3203,7 @@
     "id": 321,
     "artist": "The Beatles",
     "title": "I've Got a Feeling",
-    "album": "Let it Be",
+    "album": "Let It Be",
     "year": 1970,
     "time": 210,
     "challenge": "LIB Premiere",
@@ -3554,7 +3554,7 @@
     "artist": "The Four Seasons",
     "title": "Silver Star",
     "album": "Who Loves You",
-    "year": 1976,
+    "year": 1975,
     "time": 362,
     "challenge": "Fast Strumming",
     "chooser": "Paul"
@@ -3923,7 +3923,7 @@
     "id": 393,
     "artist": "The Beatles",
     "title": "Words of Love",
-    "album": "Beatles For Sale",
+    "album": "Beatles for Sale",
     "year": 1964,
     "time": 124,
     "challenge": "4th album",
@@ -4243,7 +4243,7 @@
     "id": 425,
     "artist": "Elvis Presley",
     "title": "Didja' Ever",
-    "album": "G.I Blues (Soundtrack)",
+    "album": "G.I. Blues (Soundtrack)",
     "year": 1960,
     "time": 156,
     "challenge": "Question in title",
@@ -4344,7 +4344,7 @@
     "artist": "The Clash",
     "title": "Stay Free",
     "album": "The Clash",
-    "year": 1978,
+    "year": 1977,
     "time": 205,
     "challenge": "Swear word",
     "chooser": "Paul"
@@ -4703,7 +4703,7 @@
     "id": 471,
     "artist": "The Beatles",
     "title": "I Don't Want to Spoil the Party",
-    "album": "Beatles For Sale",
+    "album": "Beatles for Sale",
     "year": 1964,
     "time": 153,
     "challenge": "Party",
@@ -4943,7 +4943,7 @@
     "id": 495,
     "artist": "The Rolling Stones",
     "title": "Gimme Shelter",
-    "album": "Let it Bleed",
+    "album": "Let It Bleed",
     "year": 1969,
     "time": 277,
     "challenge": "Dinner Party",
@@ -6453,7 +6453,7 @@
     "id": 646,
     "artist": "The Zutons",
     "title": "Valerie",
-    "album": "Hanging Around",
+    "album": "Tired of Hanging Around",
     "year": 2006,
     "time": 236,
     "challenge": "Z",
@@ -6506,7 +6506,7 @@
     "album": "Anthology 1",
     "year": 1958,
     "time": 127,
-    "challenge": "Z",
+    "challenge": "Q",
     "chooser": "Derek"
   },
   {
@@ -6536,7 +6536,7 @@
     "album": "I See You",
     "year": 2017,
     "time": 233,
-    "challenge": "Z",
+    "challenge": "X",
     "chooser": "Gary"
   },
   {
@@ -7184,7 +7184,7 @@
     "artist": "Pink Floyd",
     "title": "Comfortably Numb",
     "album": "The Wall",
-    "year": 1980,
+    "year": 1979,
     "time": 621,
     "challenge": "Round13",
     "chooser": "David"
@@ -7264,7 +7264,7 @@
     "artist": "Simon & Garfunkel",
     "title": "A Hazy Shade of Winter",
     "album": "Bookends",
-    "year": 1966,
+    "year": 1968,
     "time": 137,
     "challenge": "Round15",
     "chooser": "Paul"
@@ -7444,7 +7444,7 @@
     "artist": "The Cranberries",
     "title": "Dreams",
     "album": "Everybody Else Is Doing It, So Why Can't We?",
-    "year": 1992,
+    "year": 1993,
     "time": 272,
     "challenge": "Round19",
     "chooser": "David"
@@ -7741,7 +7741,7 @@
   },
   {
     "id": 775,
-    "artist": "Buddy Holly and the Crickets",
+    "artist": "Buddy Holly & the Crickets",
     "title": "Maybe Baby",
     "album": "The \"Chirping\" Crickets",
     "year": 1958,
@@ -7994,7 +7994,7 @@
     "artist": "Nirvana",
     "title": "Where Did You Sleep Last Night?",
     "album": "MTV Unplugged in New York",
-    "year": 1992,
+    "year": 1994,
     "time": 308,
     "challenge": "3/4",
     "chooser": "Nick"
@@ -8104,7 +8104,7 @@
     "artist": "Steely Dan",
     "title": "Time Out of Mind",
     "album": "Gaucho",
-    "year": 1981,
+    "year": 1980,
     "time": 250,
     "challenge": "Raphael",
     "chooser": "Gary"
@@ -8694,7 +8694,7 @@
     "artist": "Nick Drake",
     "title": "At the Chime of a City Clock",
     "album": "Bryter Layter",
-    "year": 1970,
+    "year": 1971,
     "time": 285,
     "challenge": "CarriageClock",
     "chooser": "Paul"
@@ -8711,7 +8711,7 @@
   },
   {
     "id": 872,
-    "artist": "Pyotr Illyich Tchaikovsky",
+    "artist": "Pyotr Ilyich Tchaikovsky",
     "title": "1812 Overture (Finale)",
     "album": "Concert",
     "year": 1882,
@@ -9294,7 +9294,7 @@
     "artist": "The Style Council",
     "title": "Down in the Seine",
     "album": "Our Favourite Shop",
-    "year": 1984,
+    "year": 1985,
     "time": 161,
     "challenge": "Paris Olympics 2024",
     "chooser": "Nick"
@@ -9453,7 +9453,7 @@
     "id": 946,
     "artist": "The Beatles",
     "title": "Kansas City/Hey-Hey-Hey-Hey!",
-    "album": "Beatles For Sale",
+    "album": "Beatles for Sale",
     "year": 1964,
     "time": 158,
     "challenge": "7",
@@ -9632,8 +9632,8 @@
   {
     "id": 964,
     "artist": "Iggy Pop",
-    "title": "Lust For Life",
-    "album": "Lust For Life",
+    "title": "Lust for Life",
+    "album": "Lust for Life",
     "year": 1977,
     "time": 313,
     "challenge": "Se7en",
@@ -9834,7 +9834,7 @@
     "artist": "Led Zeppelin",
     "title": "That's the Way",
     "album": "Led Zeppelin",
-    "year": 1970,
+    "year": 1969,
     "time": 337,
     "challenge": "Voice deteriorated with age",
     "chooser": "Paul"
@@ -10064,7 +10064,7 @@
     "artist": "Fleetwood Mac",
     "title": "Rhiannon",
     "album": "Fleetwood Mac",
-    "year": 1976,
+    "year": 1975,
     "time": 251,
     "challenge": "Singer gets drummer",
     "chooser": "Paul"
